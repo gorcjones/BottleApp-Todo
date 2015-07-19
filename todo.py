@@ -1,5 +1,5 @@
 import sqlite3
-from bottle import route, run
+from bottle import route, run, debug
 
 @route('/todo')
 def toto_list():
@@ -8,5 +8,5 @@ def toto_list():
 	c.execute("SELECT id, task FROM todo WHERE status LIKE '1'")
 	result = c.fetchall()
 	return str(result)
-
-run()
+debug(True)
+run(reloader=True)
